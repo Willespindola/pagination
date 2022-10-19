@@ -1,6 +1,4 @@
 <?php
-$url = substr($_SERVER["REQUEST_URI"], strpos($_SERVER["REQUEST_URI"], '/')+1);
-$mat = str_replace('blog/materias-blog/', '', $url);
 
 $texto ='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque expedita quis autem provident quos officiis illo sit culpa incidunt magni unde ipsa repellat corrupti ipsam doloribus quo voluptas fugit!
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque expedita quis autem provident quos officiis illo sit culpa incidunt magni unde ipsa repellat corrupti ipsam doloribus quo voluptas fugit!
@@ -39,28 +37,14 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque expedita qu
       <?php include __DIR__ . '/includes/header.php';?>
       <!-- Galeria -->
       <section class="gallery">
-        <?php
-        $database->SetMenu('blog/banner-blog/', '1');
-        $database->SetIniciarRegistro(0);
-        $database->SetItensPag(1); //Quantos itens
-        $database->setTipoFiltro('posicao');
-        $database->SetOrder('ASC');
-        $database->paginas(base64_encode('
-          <!--repeteA-->
           <figure><img src="fotoGrandeSYS" alt="tituloSYS" width="100%" height="auto"></figure>
-          <!--repeteB-->
-        '));
-        ?>
       </section>    
         <div class="container mt-5">
           <div class="row">
             <!-- Conteúdo -->
-            <?php
-            $database->SetMenu($database->parametros['menuRoteador'],'1');
-            ?>
               <div class="col-12 col-md-6 col-lg-8">
-                <h1 class="blogTitle"><?php $database->interno(base64_encode('tituloSYS')); ?></h1>
-                <h3 class="blogSubtitle"><?php $database->interno(base64_encode('campoOpcionalClearSYS')); ?></h3>
+                <h1 class="blogTitle"></h1>
+                <h3 class="blogSubtitle"></h3>
                 <!-- <div class=""> -->
                   <?php
                   $textoString = implode($texto);       
@@ -153,16 +137,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque expedita qu
             <div class="col-12 col-md-6 col-lg-3 offset-lg-1 box-ler-mais">
               <div class="row">
                 <!-- Card Blog -->
-                <?php
-                $database->SetMenu('/blog/materias-blog', '1');
-                $database->SetIniciarRegistro(0);
-                $database->setLimiteDescricao(100);
-                $database->SetItensPag(2); //Quantos itens
-                $database->setTipoFiltro('posicao');
-                $database->setLimiteTitulo(100);
-                $database->SetOrder('ASC');
-                $database->paginas(base64_encode('
-                  <!--repeteA-->
                   <aside class="col-12 mb-5">
                     <div class="cardBlog cardShadow zoomIn" title="Ir para Blog" aria-label="Ir para Blog">
                       <figure>
@@ -178,9 +152,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, atque expedita qu
                       </div>
                     </div>
                   </aside>
-                  <!--repeteB-->
-                '));
-                  ?>  
               </div>
             </div>
           </div>
